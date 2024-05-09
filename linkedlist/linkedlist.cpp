@@ -97,5 +97,13 @@ void LinkedList::insertAt(int targetIndex, int addData) {
 }
 
 void LinkedList::reverseList() {
-    
+    curr = head;
+    if (curr->next == nullptr) { // handle single item linked list
+        cout << curr << " is the only item on the list.\n";
+    } else {
+        while (curr->next != nullptr) {
+            temp = curr;
+            curr = curr->next;
+        }
+    }
 }
