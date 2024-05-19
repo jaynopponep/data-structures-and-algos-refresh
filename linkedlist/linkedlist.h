@@ -1,7 +1,3 @@
-//
-// Created by Noppo on 5/7/2024.
-//
-
 #ifndef DS_AREFRESH_LINKEDLIST_H
 #define DS_AREFRESH_LINKEDLIST_H
 
@@ -10,7 +6,6 @@ private:
     typedef struct node{
         int data;
         node* next; // Points to the next node
-        node* prev;
     }* nodePtr;
     // basically defining nodePtr as struct node* (with the use of typedef)
     // to put simply, "typedef" assigns "struct node{}*" to nodePtr and takes its attributes and such
@@ -18,6 +13,8 @@ private:
     nodePtr head; // head node
     nodePtr curr;
     nodePtr temp;
+    nodePtr prev;
+    nodePtr next;
 
 public:
     LinkedList();

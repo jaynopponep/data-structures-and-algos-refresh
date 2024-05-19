@@ -9,7 +9,8 @@ LinkedList::LinkedList() {
     head = nullptr;
     curr = nullptr;
     temp = nullptr;
-
+    prev = nullptr;
+    next = nullptr;
 }
 
 void LinkedList::addNode(int addData) {
@@ -59,7 +60,7 @@ void LinkedList::printList() {
         cout << curr->data << "-> ";
         curr = curr->next;
     }
-    cout << endl;
+    cout << "nullptr" << endl;
 }
 
 void LinkedList::indexOf(int targetData) {
@@ -97,13 +98,18 @@ void LinkedList::insertAt(int targetIndex, int addData) {
 }
 
 void LinkedList::reverseList() {
-    curr = head;
-    if (curr->next == nullptr) { // handle single item linked list
-        cout << curr << " is the only item on the list.\n";
+    if (head == nullptr || head->next == nullptr) { // handle single item linked list
+        cout << head->data << " is the only item on the list.\n";
     } else {
-        while (curr->next != nullptr) {
-            temp = curr;
-            curr = curr->next;
+        curr = head;
+        next = nullptr;
+        prev = nullptr;
+        while (curr != nullptr) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
         }
+        head = prev;
     }
 }
